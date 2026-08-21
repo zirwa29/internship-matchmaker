@@ -1,0 +1,24 @@
+Python
+Java
+JavaScript
+HTML
+CSS
+SQL
+MySQL
+PostgreSQL
+Pandas
+NumPy
+Scikit-learn
+Machine Learning
+Excel
+Power BI
+Tableau
+Git
+GitHub
+Flask
+Django
+React
+C++
+C#
+Data Analysis
+Statistics
