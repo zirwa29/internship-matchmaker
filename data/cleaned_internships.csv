@@ -1,0 +1,26 @@
+id,company,title,description,skills,location,work_type
+1,Tech Company,Data Analyst Intern,Analyze business data and create reports,"Python, SQL, Excel, Power BI",Lahore,Hybrid
+2,Software House,Software Engineer Intern,Help develop and maintain software applications,"Python, Java, Git, SQL",Islamabad,On-site
+3,AI Company,ML Intern,Assist with machine learning projects and data analysis,"Python, Pandas, NumPy, Scikit-learn",Lahore,Remote
+4,FinTech Solutions,Data Science Intern,Work with financial datasets and build predictive models,"Python, SQL, Pandas, Machine Learning",Karachi,Hybrid
+5,WebWorks,Web Developer Intern,Develop and maintain websites,"HTML, CSS, JavaScript, Git",Lahore,On-site
+6,DataTech,Junior Data Analyst Intern,Clean data and prepare analytical reports,"Python, SQL, Excel",Islamabad,Remote
+7,Cloud Systems,Backend Developer Intern,Build backend services and APIs,"Python, Flask, SQL, Git",Lahore,Hybrid
+8,AI Labs,AI Research Intern,Support research projects involving artificial intelligence,"Python, NumPy, Pandas, Machine Learning",Islamabad,Remote
+9,Digital Solutions,Frontend Developer Intern,Create user interfaces for web applications,"HTML, CSS, JavaScript, React",Lahore,Hybrid
+10,Business Analytics,BI Intern,Create dashboards and business reports,"Power BI, Excel, SQL",Karachi,On-site
+11,CodeHub,Python Developer Intern,Develop Python applications and automate tasks,"Python, Flask, Git, SQL",Lahore,Remote
+12,Smart Tech,Data Engineer Intern,Help build data pipelines and databases,"Python, SQL, Pandas, ETL",Islamabad,Hybrid
+13,Innovate AI,Deep Learning Intern,Work on neural network and computer vision projects,"Python, TensorFlow, NumPy, Machine Learning",Lahore,Remote
+14,WebSoft,Full Stack Developer Intern,Develop frontend and backend features,"HTML, CSS, JavaScript, Python, SQL",Karachi,On-site
+15,Market Insights,Market Data Intern,Analyze customer and market data,"Excel, SQL, Power BI, Python",Lahore,Hybrid
+16,SecureTech,Cybersecurity Intern,Assist with security monitoring and analysis,"Python, Linux, Networking, Git",Islamabad,On-site
+17,AppWorks,Mobile App Developer Intern,Help develop mobile applications,"Java, Kotlin, Git, SQL",Lahore,Hybrid
+18,Data Insights,Data Visualization Intern,Create visualizations and dashboards from datasets,"Python, Matplotlib, Power BI, SQL",Karachi,Remote
+19,TechStart,Software Testing Intern,Test applications and identify software bugs,"Python, Java, SQL, Git",Lahore,On-site
+20,CloudTech,Cloud Engineering Intern,Assist with cloud infrastructure and deployment,"Python, Linux, Git, Docker",Islamabad,Remote
+21,AI Vision,Computer Vision Intern,Work on image processing and computer vision tasks,"Python, OpenCV, NumPy, Machine Learning",Lahore,Hybrid
+22,FinanceTech,Financial Analyst Intern,Analyze financial information and prepare reports,"Excel, SQL, Power BI, Python",Karachi,On-site
+23,CodeCraft,Java Developer Intern,Develop Java applications and work with databases,"Java, SQL, Git, OOP",Islamabad,Hybrid
+24,Analytics Hub,Machine Learning Intern,Build and evaluate machine learning models,"Python, Pandas, Scikit-learn, SQL",Lahore,Remote
+25,Digital Labs,Data Science Intern,Explore datasets and develop predictive models,"Python, Pandas, NumPy, Scikit-learn",Karachi,Hybrid
