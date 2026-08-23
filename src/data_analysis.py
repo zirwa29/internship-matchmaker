@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load internship dataset
 internships = pd.read_csv("data/internships.csv")
@@ -11,6 +12,7 @@ print(internships)
 # Dataset dimensions
 print("\nDataset shape:")
 print(internships.shape)
+
 
 # Column names
 print("\nColumn names:")
@@ -49,3 +51,12 @@ cleaned_internships.to_csv(
 )
 
 print("\nCleaned dataset saved successfully!")
+
+category_count=cleaned_internships['skills'].value_counts().head(7)
+category_count.plot(kind='bar')
+plt.title('top internship skills ')
+plt.xlabel('skills')
+plt.ylabel('number of skills')
+plt.show()
+
+cleaned_internships.to_csv("data/cleaned_internships.csv",index=False)
