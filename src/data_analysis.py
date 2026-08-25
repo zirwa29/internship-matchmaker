@@ -6,29 +6,29 @@ internships = pd.read_csv("data/internships.csv")
 
 print("Dataset loaded successfully!")
 
-# # Display dataset
-# print(internships)
+# display dataset
+print(internships)
 
-# # Dataset dimensions
-# print("\nDataset shape:")
-# print(internships.shape)
+# dataset dimensions
+print("\ndataset shape:")
+print(internships.shape)
 
 
-# # Column names
-# print("\nColumn names:")
-# print(internships.columns)
+# column names
+print("\ncolumn names:")
+print(internships.columns)
 
-# # Missing values
-# print("\nMissing values:")
-# print(internships.isnull().sum())
+# missing values
+print("\nmissing values:")
+print(internships.isnull().sum())
 
-# # Duplicate rows
-# print("\nDuplicate rows:")
-# print(internships.duplicated().sum())
+# duplicate rows
+print("\nduplicate rows:")
+print(internships.duplicated().sum())
 
-# # Dataset information
-# print("\nDataset information:")
-# internships.info()
+# dataset information
+print("\ndataset information:")
+internships.info()
 
 # Create a copy for cleaning
 cleaned_internships = internships.copy()
@@ -52,28 +52,28 @@ cleaned_internships.to_csv(
 
 print("\nCleaned dataset saved successfully!")
 
-# category_count=cleaned_internships['skills'].value_counts().head(7)
-# category_count.plot(kind='bar')
-# plt.title('top internship skills ')
-# plt.xlabel('skills')
-# plt.ylabel('number of skills')
-# plt.show()
+category_count=cleaned_internships['skills'].value_counts().head(7)
+category_count.plot(kind='bar')
+plt.title('top internship skills ')
+plt.xlabel('skills')
+plt.ylabel('number of skills')
+plt.show()
 
-# cleaned_internships.to_csv("data/cleaned_internships.csv",index=False)
-# #location
-# location_count = cleaned_internships["location"].value_counts()
-# print("internship by location")
-# print(location_count)
+cleaned_internships.to_csv("data/cleaned_internships.csv",index=False)
+#location
+location_count = cleaned_internships["location"].value_counts()
+print("internship by location")
+print(location_count)
 
-# #work types
-# work_types=cleaned_internships["work_type"].value_counts()
-# print("internship by workplace")
-# print(work_types)
+#work types
+work_types=cleaned_internships["work_type"].value_counts()
+print("internship by workplace")
+print(work_types)
 
-# #titles
-# internship_titles=cleaned_internships["title"].value_counts
-# print("internships by titles")
-# print(internship_titles)
+#titles
+internship_titles=cleaned_internships["title"].value_counts()
+print("internships by titles")
+print(internship_titles)
  #skills
 print(cleaned_internships["skills"])
 
@@ -105,3 +105,5 @@ plt.xlabel("skills")
 plt.ylabel("no. of skills")
 plt.show()
 cleaned_internships.to_csv("data/cleaned_internships.csv", index=False)
+
+
