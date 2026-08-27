@@ -31,7 +31,7 @@ def calculate_match(internship_skills, student_skills):
 
 
 internships["match_score"] = internships["skills"].apply(
-    lambda x: calculate_match(x, student_skills)
+    lambda x: calculate_match(x,student_skills)
 )
 
 
@@ -48,3 +48,10 @@ print(
         ["company", "title", "skills", "match_score"]
     ].head(5)
 )
+internships = internships.sort_values(
+    by="match_score",
+    ascending=False
+)
+print("\nTop Internship Recommendations:")
+print(internships[["company", "title", "location", "match_score"]].head(5))
+internships.to_csv("data/matched_internships.csv",index=False)
