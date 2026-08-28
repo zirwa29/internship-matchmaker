@@ -29,29 +29,78 @@ def calculate_match(internship_skills, student_skills):
 
     return len(matched_skills)
 
+def get_matched_skills(student_skills,internship_skills):
+    internship_skills=[skill.strip().lower()
+                      for skill in internship_skills.split(",")
+                       ]
+    student_skills=[skill.strip().lower()
+                    for skill in student_skills
+                    ]
+    matched_skills=set(internship_skills)&set(student_skills)
+    return ", ".join(matched_skills)
 
+def get_match_level(percentage):
+        if percentage >= 80:
+          return "Excellent"
+        elif percentage >= 60:
+          return "Good"
+        elif percentage >= 40:
+          return "Average"
+        else:
+          return "Poor"
+ 
+
+
+# Calculate match score
 internships["match_score"] = internships["skills"].apply(
-    lambda x: calculate_match(x,student_skills)
+    lambda x: calculate_match(x, student_skills)
 )
 
+# Calculate matched skills
+internships["matched_skills"] = internships["skills"].apply(
+    lambda x: get_matched_skills(student_skills, x)
+)
 
+# Calculate match percentage
+internships["match_percentage"] = (
+    internships["match_score"] /
+    internships["skills"].str.split(",").str.len()
+) * 100
+
+# Round percentage
+internships["match_percentage"] = internships["match_percentage"].round(1)
+
+# Calculate match level
+internships["match_level"] = internships["match_percentage"].apply(get_match_level)
+                                                                   
+                                                                   
+                          
+# Sort
 internships = internships.sort_values(
-    by="match_score",
+    by="match_percentage",
     ascending=False
 )
 
+# Remove zero matches
+recommended = internships[internships["match_score"] > 0]
 
-print("\nBest internship matches:")
+# Get top 5
+top_recommendations = recommended.head(5)
 
-print(
-    internships[
-        ["company", "title", "skills", "match_score"]
-    ].head(5)
+# Display
+print("\n===== TOP INTERNSHIP RECOMMENDATIONS =====")
+
+for index, internship in top_recommendations.iterrows():
+    print("\n-----------------------------")
+    print(f"Company: {internship['company']}")
+    print(f"Title: {internship['title']}")
+    print(f"Location: {internship['location']}")
+    print(f"Match: {internship['match_percentage']}%")
+    print(f"Level: {internship['match_level']}")
+    print(f"Matched Skills: {internship['matched_skills']}")
+
+# Save
+recommended.to_csv(
+    "data/recommended_internships.csv",
+    index=False
 )
-internships = internships.sort_values(
-    by="match_score",
-    ascending=False
-)
-print("\nTop Internship Recommendations:")
-print(internships[["company", "title", "location", "match_score"]].head(5))
-internships.to_csv("data/matched_internships.csv",index=False)
