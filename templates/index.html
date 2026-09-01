@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internship Matchmaker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Internship Matchmaker</h1>
+
+    <form method="POST">
+
+        <label>Enter your skills:</label>
+
+        <input type="text"
+               name="skills"
+               placeholder="Python, pandas, SQL">
+
+        <button type="submit">Find Internships</button>
+
+    </form>
+
+    {% if recommendations %}
+
+    <h2>Recommended Internships</h2>
+
+    {% for internship in recommendations %}
+
+    <div>
+        <div class="internship-card">
+            <h3>{{ internship.company }}</h3>
+
+            <p>
+                <strong>Title:</strong>
+                {{ internship.title }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ internship.location }}
+            </p>
+
+            <p>
+                <strong>Work Type:</strong>
+                {{ internship.work_type }}
+            </p>
+
+            <p>
+                <strong>Skills:</strong>
+                {{ internship.skills }}
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                {{ internship.description }}
+            </p>
+
+            <p>
+                <strong>Match Score:</strong>
+                {{ internship.match_score }}
+            </p>
+
+            <p>
+                <strong>Match Level:</strong>
+                {{ internship.match_level }}
+            </p>
+
+            <hr>
+        </div>
+
+        </div>
+
+    {% endfor %}
+
+    {% endif %}
+
+</body>
+</html>

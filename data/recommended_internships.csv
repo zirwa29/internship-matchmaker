@@ -1,7 +1,7 @@
 id,company,title,description,skills,location,work_type,match_score,matched_skills,match_percentage,match_level
-4,FinTech Solutions,Data Science Intern,Work with financial datasets and build predictive models,"Python, SQL, Pandas, Machine Learning",Karachi,Hybrid,3,"python, sql, pandas",75.0,Good
-24,Analytics Hub,Machine Learning Intern,Build and evaluate machine learning models,"Python, Pandas, Scikit-learn, SQL",Lahore,Remote,3,"python, sql, pandas",75.0,Good
-12,Smart Tech,Data Engineer Intern,Help build data pipelines and databases,"Python, SQL, Pandas, ETL",Islamabad,Hybrid,3,"python, sql, pandas",75.0,Good
+4,FinTech Solutions,Data Science Intern,Work with financial datasets and build predictive models,"Python, SQL, Pandas, Machine Learning",Karachi,Hybrid,3,"python, pandas, sql",75.0,Good
+24,Analytics Hub,Machine Learning Intern,Build and evaluate machine learning models,"Python, Pandas, Scikit-learn, SQL",Lahore,Remote,3,"python, pandas, sql",75.0,Good
+12,Smart Tech,Data Engineer Intern,Help build data pipelines and databases,"Python, SQL, Pandas, ETL",Islamabad,Hybrid,3,"python, pandas, sql",75.0,Good
 6,DataTech,Junior Data Analyst Intern,Clean data and prepare analytical reports,"Python, SQL, Excel",Islamabad,Remote,2,"python, sql",66.7,Good
 1,Tech Company,Data Analyst Intern,Analyze business data and create reports,"Python, SQL, Excel, Power BI",Lahore,Hybrid,2,"python, sql",50.0,Average
 8,AI Labs,AI Research Intern,Support research projects involving artificial intelligence,"Python, NumPy, Pandas, Machine Learning",Islamabad,Remote,2,"python, pandas",50.0,Average

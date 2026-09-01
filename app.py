@@ -1,57 +1,53 @@
-from flask import Flask, jsonify, request
+from flask import Flask, render_template, request
+from src.matcher import calculate_match
 import pandas as pd
 
 app = Flask(__name__)
 
+internships = pd.read_csv("data/cleaned_internships.csv")
 
-@app.route("/")
+
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return "Internship Matchmaker API is running!"
 
+    recommendations = []
 
-@app.route("/recommendations")
-def recommendations():
+    if request.method == "POST":
 
-    skills = request.args.get("skills")
+        skills = request.form["skills"]
 
-    if not skills:
-        return jsonify({
-            "error": "Please provide skills"
-        }), 400
-
-    student_skills = [
-        skill.strip().lower()
-        for skill in skills.split(",")
-    ]
-
-    internships = pd.read_csv("data/internships.csv")
-
-    def calculate_match(internship_skills):
-
-        internship_skills = [
+        student_skills = [
             skill.strip().lower()
-            for skill in internship_skills.split(",")
+            for skill in skills.split(",")
         ]
 
-        matched_skills = set(student_skills) & set(internship_skills)
+        internships["match_score"] = internships["skills"].apply(
+            lambda x: calculate_match(x, student_skills)
+        )
 
-        return len(matched_skills)
+        recommended_internships = internships.sort_values(
+            by="match_score",
+            ascending=False
+        )
 
-    internships["match_score"] = internships["skills"].apply(
-        calculate_match
-    )
+        recommendations = recommended_internships.head(5).to_dict("records")
 
-    internships = internships[internships["match_score"] > 0]
+        for internship in recommendations:
 
-    internships = internships.sort_values(
-        by="match_score",
-        ascending=False
-    )
+            score = internship["match_score"]
 
-    top_internships = internships.head(5)
+            if score >= 3:
+                internship["match_level"] = "Excellent Match"
+            elif score == 2:
+                internship["match_level"] = "Good Match"
+            elif score == 1:
+                internship["match_level"] = "Average Match"
+            else:
+                internship["match_level"] = "Poor Match"
 
-    return jsonify(
-        top_internships.to_dict(orient="records")
+    return render_template(
+        "index.html",
+        recommendations=recommendations
     )
 
 
