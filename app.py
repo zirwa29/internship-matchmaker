@@ -1,5 +1,11 @@
+
 from flask import Flask, render_template, request
-from src.matcher import calculate_match
+from src.matcher import (
+    calculate_match,
+    get_matched_skills,
+    get_match_percentage,
+    get_match_level
+)
 import pandas as pd
 
 app = Flask(__name__)
@@ -17,7 +23,7 @@ def home():
         skills = request.form["skills"]
 
         student_skills = [
-            skill.strip().lower()
+            skill.strip()
             for skill in skills.split(",")
         ]
 
@@ -25,25 +31,26 @@ def home():
             lambda x: calculate_match(x, student_skills)
         )
 
-        recommended_internships = internships.sort_values(
-            by="match_score",
-            ascending=False
+        internships["matched_skills"] = internships["skills"].apply(
+            lambda x: get_matched_skills(x, student_skills)
         )
 
-        recommendations = recommended_internships.head(5).to_dict("records")
+        internships["match_percentage"] = internships["skills"].apply(
+            lambda x: get_match_percentage(x, student_skills)
+        )
 
-        for internship in recommendations:
+        internships["match_level"] = internships["match_percentage"].apply(
+            get_match_level
+        )
 
-            score = internship["match_score"]
+        recommendations = internships[
+            internships["match_score"] > 0
+        ].sort_values(
+            by="match_percentage",
+            ascending=False
+        ).head(5)
 
-            if score >= 3:
-                internship["match_level"] = "Excellent Match"
-            elif score == 2:
-                internship["match_level"] = "Good Match"
-            elif score == 1:
-                internship["match_level"] = "Average Match"
-            else:
-                internship["match_level"] = "Poor Match"
+        recommendations = recommendations.to_dict("records")
 
     return render_template(
         "index.html",

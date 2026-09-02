@@ -29,7 +29,7 @@ def calculate_match(internship_skills, student_skills):
 
     return len(matched_skills)
 
-def get_matched_skills(student_skills,internship_skills):
+def get_matched_skills(internship_skills,student_skills):
     internship_skills=[skill.strip().lower()
                       for skill in internship_skills.split(",")
                        ]
@@ -38,6 +38,28 @@ def get_matched_skills(student_skills,internship_skills):
                     ]
     matched_skills=set(internship_skills)&set(student_skills)
     return ", ".join(matched_skills)
+
+
+def get_match_percentage(internship_skills, student_skills):
+
+    internship_skills = [
+        skill.strip().lower()
+        for skill in internship_skills.split(",")
+    ]
+
+    student_skills = [
+        skill.strip().lower()
+        for skill in student_skills
+    ]
+
+    matched_skills = set(internship_skills) & set(student_skills)
+
+    if len(internship_skills) == 0:
+        return 0
+
+    return round(
+        (len(matched_skills) / len(internship_skills)) * 100
+    )
 
 def get_match_level(percentage):
         if percentage >= 80:
@@ -58,7 +80,7 @@ internships["match_score"] = internships["skills"].apply(
 
 # Calculate matched skills
 internships["matched_skills"] = internships["skills"].apply(
-    lambda x: get_matched_skills(student_skills, x)
+    lambda x: get_matched_skills(x, student_skills)
 )
 
 # Calculate match percentage

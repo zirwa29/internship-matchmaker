@@ -49,3 +49,45 @@ h2 {
 	.internship-card h3 {
 		margin-top: 0;
 	}
+
+
+.recommendations {
+	width: 80%;
+	max-width: 800px;
+	margin: 20px auto;
+}
+
+.internship-card {
+	background-color: white;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+	.internship-card h3 {
+		margin-top: 0;
+		font-size: 22px;
+	}
+
+	.internship-card p {
+		margin: 10px 0;
+	}
+
+	.internship-card strong {
+		font-weight: bold;
+	}
+.no-results {
+	width: 80%;
+	max-width: 800px;
+	margin: 30px auto;
+	padding: 20px;
+	text-align: center;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+	.no-results h3 {
+		margin-top: 0;
+	}
