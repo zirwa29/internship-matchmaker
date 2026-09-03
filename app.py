@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 from src.matcher import (
     calculate_match,
@@ -21,6 +20,9 @@ def home():
     if request.method == "POST":
 
         skills = request.form["skills"]
+        location = request.form["location"]
+        work_type = request.form.get("work_type", "Any")
+        
 
         student_skills = [
             skill.strip()
@@ -43,9 +45,23 @@ def home():
             get_match_level
         )
 
-        recommendations = internships[
+        filtered_internships = internships[
             internships["match_score"] > 0
-        ].sort_values(
+        ]
+
+        if location != "Any":
+            filtered_internships = filtered_internships[
+                filtered_internships["location"].str.lower() == location.lower()
+            ]
+
+        if work_type != "Any":
+            filtered_internships = filtered_internships[
+            filtered_internships["work_type"].str.lower() == work_type.lower()
+             ]
+
+
+
+        recommendations = filtered_internships.sort_values(
             by="match_percentage",
             ascending=False
         ).head(5)

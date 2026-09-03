@@ -18,10 +18,34 @@
 
         <input type="text"
                name="skills"
-               placeholder="Python, pandas, SQL">
+               placeholder="Python, pandas, SQL"
+               required>
+
+        <label>Select your preferred location:</label>
+
+        <select name="location">
+
+            <option value="Any">Any Location</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Karachi">Karachi</option>
+            <option value="Remote">Remote</option>
+
+        </select>
+
+        <label>Select your preferred work type:</label>
+
+        <select name="work_type">
+
+            <option value="Any">Any Work Type</option>
+            <option value="Remote">Remote</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="On-site">On-site</option>
+
+        </select>
 
         <button type="submit">Find Internships</button>
-
+        <a href="/" class="clear-button">Clear Filters</a>
     </form>
 
     {% if recommendations %}
@@ -56,6 +80,11 @@
             <p>
                 <strong>Skills:</strong>
                 {{ internship.skills }}
+            </p>
+
+            <p>
+                <strong>Matched Skills:</strong>
+                {{ internship.matched_skills }}
             </p>
 
             <p>
